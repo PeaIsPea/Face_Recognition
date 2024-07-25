@@ -1,6 +1,9 @@
 from tkinter import*
 from tkinter import ttk
 from PIL import Image,ImageTk
+import os
+from Student import Student
+from train import Train
 
 
 class Face_Recognition_System:
@@ -54,10 +57,10 @@ class Face_Recognition_System:
         img5=img5.resize((200,200),Image.BICUBIC)
         self.photoimg5=ImageTk.PhotoImage(img5)
 
-        b1 = Button(bg_img,image=self.photoimg5,cursor="hand2")
+        b1 = Button(bg_img,image=self.photoimg5,command=self.student_details,cursor="hand2")
         b1.place(x=200,y=100,width=200,height=200)
 
-        b1_1 = Button(bg_img,text="Chi tiết học sinh",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b1_1 = Button(bg_img,text="Chi tiết học sinh",command=self.student_details,cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b1_1.place(x=200,y=300,width=200,height=40)
 
 
@@ -107,10 +110,10 @@ class Face_Recognition_System:
         img9=img9.resize((200,200),Image.BICUBIC)
         self.photoimg9=ImageTk.PhotoImage(img9)
 
-        b5 = Button(bg_img,image=self.photoimg9,cursor="hand2")
+        b5 = Button(bg_img,image=self.photoimg9,cursor="hand2",command=self.train_data)
         b5.place(x=200,y=400,width=200,height=200)
 
-        b5_1 = Button(bg_img,text="Train Data",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b5_1 = Button(bg_img,text="Train Data",cursor="hand2",command=self.train_data,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b5_1.place(x=200,y=600,width=200,height=40)
 
 
@@ -120,10 +123,10 @@ class Face_Recognition_System:
         img10=img10.resize((200,200),Image.BICUBIC)
         self.photoimg10=ImageTk.PhotoImage(img10)
 
-        b6 = Button(bg_img,image=self.photoimg10,cursor="hand2")
+        b6 = Button(bg_img,image=self.photoimg10,cursor="hand2",command=self.open_img)
         b6.place(x=500,y=400,width=200,height=200)
 
-        b6_1 = Button(bg_img,text="Photos",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
+        b6_1 = Button(bg_img,text="Photos",cursor="hand2",command=self.open_img,font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b6_1.place(x=500,y=600,width=200,height=40)
 
 
@@ -150,6 +153,29 @@ class Face_Recognition_System:
 
         b8_1 = Button(bg_img,text="Exit",cursor="hand2",font=("times new roman",15,"bold"),bg="darkblue",fg="white")
         b8_1.place(x=1100,y=600,width=200,height=40)
+
+
+
+
+    def open_img(self):
+        os.startfile("data")
+
+
+
+    #===============Function buttons==============
+
+    def student_details(self):
+        self.new_window = Toplevel(self.root)
+        self.app=Student(self.new_window)
+
+
+    def train_data(self):
+        self.new_window = Toplevel(self.root)
+        self.app=Train(self.new_window)
+
+
+
+
 
 
 
